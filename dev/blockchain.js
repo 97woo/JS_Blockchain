@@ -2,7 +2,7 @@ function Blockchain (){
     this.chain = [];
     this.newTransactions = [];
 }
-
+//블록생성
 Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash){
     const newBlock = {
         index: this.chain.length + 1,
@@ -17,9 +17,20 @@ Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash){
     return newBlock;
 }
 
+//마지막 블록
 Blockchain.prototype.getLastBlock = function() { 
     return this.chain[this.chain.length - 1];
     }
+
+//트랜잭션 생성
+Blockchain.prototype.createNewTransaction = function(amount,sender, recipient) {
+    const newTransaction ={
+        amount : amount,
+        sender : sender,
+        recipient : recipient
+    };
+    this.newTransactions.push(newTransaction);
+}
 
 
 module.exports = Blockchain;
